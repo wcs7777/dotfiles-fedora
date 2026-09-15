@@ -39,6 +39,9 @@
     ~/.config/home-manager/home.nix:
       type: hardlink
       path: ./config-files/config/home-manager/home.nix
+    ~/.config/nix/nix.conf:
+      type: hardlink
+      path: ./config-files/config/nix/nix.conf
 
 - defaults:
     git:
@@ -89,7 +92,6 @@
   - zsh
 
 - shell:
-  - [echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf, Configuring nix flakes]
   - [source ./install-scripts/mise.sh, Installing mise]
   - [source ./install-scripts/docker.sh, Installing docker]
   - [source ./install-scripts/nvim.sh, Installing nvim]
