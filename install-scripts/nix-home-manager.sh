@@ -2,7 +2,7 @@
 
 if command -v home-manager &> /dev/null; then
 	echo "home-manager is already installed"
-	exit 0
+	return 0
 fi
 
 current_dir=$(pwd)

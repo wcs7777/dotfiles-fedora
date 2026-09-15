@@ -1,7 +1,7 @@
 #!/bin/bash
 if command -v func &> /dev/null; then
 	echo "func is already installed"
-	exit 0
+	return 0
 fi
 
 zip_file=/tmp/azure-functions.zip

@@ -2,7 +2,7 @@
 
 if command -v sqlcmd &> /dev/null; then
 	echo "mssql tools is already installed"
-	exit 0
+	return 0
 fi
 
 id=$(. /etc/os-release && echo "$ID")

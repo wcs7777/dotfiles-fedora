@@ -2,7 +2,7 @@
 
 if command -v az &> /dev/null; then
 	echo "az is already installed"
-	exit 0
+	return 0
 fi
 
 sudo rpm --import https://packages.microsoft.com/keys/microsoft-2025.asc

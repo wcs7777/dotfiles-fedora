@@ -2,7 +2,7 @@
 
 if command -v docker &> /dev/null; then
 	echo "docker is already installed"
-	exit 0
+	return 0
 fi
 
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
