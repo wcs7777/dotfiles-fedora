@@ -3,6 +3,8 @@
   - dotbot-plugins/dnf.py
 
 - shell:
+  - [sudo systemctl start dbus, Starting dbus service]
+  - [sudo systemctl reset-failed, Resetting failed services]
   - [git submodule update --init --recursive, Installing submodules]
   - [sudo chown root:root "$(pwd)"/config-files/etc/wsl.conf, Making root owner of wsl.conf]
   - [sudo ln -f "$(pwd)"/config-files/etc/wsl.conf /etc/wsl.conf, Linking wsl.conf]
@@ -76,6 +78,7 @@
   - jq
   - litecli
   - man-db
+  - ncurses
   - nix
   - odbcinst
   - ripgrep
@@ -102,6 +105,7 @@
   - [source ./install-scripts/nix-home-manager.sh, Installing home-manager]
   - [source ./install-scripts/mise.sh, Installing mise]
   - [source ./install-scripts/docker.sh, Installing docker]
+  - [source ./setup-scripts/config-locales.sh, Configuring locales]
   - [zsh -c "home-manager switch", Installing home-manager packages]
   - [zsh -c "mise install", Installing mise packages]
   - [source ./install-scripts/nvim.sh, Installing nvim]
