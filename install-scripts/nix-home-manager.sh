@@ -9,6 +9,7 @@ current_dir=$(pwd)
 
 cd ~/.config/home-manager
 
+sudo systemctl enable nix-daemon
 nix build .#homeConfigurations."wcs".activationPackage
 ./result/activate
 
