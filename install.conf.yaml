@@ -83,7 +83,7 @@
   - trash-cli
   - tree
   - unzip
-  - vim-gtk3
+  - vim-X11
   - wget
   - zip
   - zsh
