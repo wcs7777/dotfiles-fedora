@@ -91,6 +91,13 @@
   - zip
   - zsh
 
+- defaults:
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+      quiet: false
+
 - shell:
   - [source ./install-scripts/nix-home-manager.sh, Installing home-manager]
   - [source ./install-scripts/mise.sh, Installing mise]
@@ -99,3 +106,4 @@
   - [zsh -c "mise install", Installing mise packages]
   - [source ./install-scripts/nvim.sh, Installing nvim]
   - [~/.local/bin/nvim --headless "+Lazy! install" +qa, Installing Lazy plugins]
+  - [chsh -s /bin/zsh, Setting zsh as the default shell]
