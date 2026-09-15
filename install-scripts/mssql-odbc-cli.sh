@@ -5,13 +5,6 @@ if command -v sqlcmd &> /dev/null; then
 	return 0
 fi
 
-id=$(. /etc/os-release && echo "$ID")
-# version=$(. /etc/os-release && echo "$VERSION_ID")
-version="25.10"
-
-curl -sLSO https://packages.microsoft.com/config/$id/$version/packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
-
-sudo apt-get update
-sudo ACCEPT_EULA=Y apt-get install msodbcsql18 mssql-tools18 --yes
+sudo dnf config-manager addrepo --from-repofile https://packages.microsoft.com/config/rhel/9/prod.repo
+# (--allowerasing may be required to overwrite existing unixODBC packages)
+sudo ACCEPT_EULA=Y dnf install msodbcsql18 mssql-tools18 --allowerasing --assumeyes

@@ -14,5 +14,6 @@ curl -SL \
 mkdir -p "$install_dir"
 unzip "$zip_file" -d "$install_dir"
 chmod +x "$install_dir/func"
-chmod +x "$install_dir/gozip"
+chmod +x "$install_dir/in-proc6/gozip"
+chmod +x "$install_dir/in-proc8/gozip"
 ln -fs $install_dir/func ~/.local/bin/func
