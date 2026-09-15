@@ -1,0 +1,96 @@
+- plugins:
+  - dotbot-plugins/git.py
+  - dotbot-plugins/dnf.py
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [sudo chown root:root "$(pwd)"/config-files/etc/wsl.conf, Making root owner of wsl.conf]
+  - [sudo ln -f "$(pwd)"/config-files/etc/wsl.conf /etc/wsl.conf, Linking wsl.conf]
+  - [ln -fs /mnt/c/Users/$(/mnt/c/Program\ Files/PowerShell/7/pwsh.exe -NoProfile -Command 'Write-Host $env:USERNAME -NoNewline') ~/win, Creating windows symbolic link]
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- link:
+    ~/.gitconfig: ./config-files/gitconfig
+    ~/.zshrc: ./config-files/zshrc
+    ~/.zshenv: ./config-files/zshenv
+    ~/.vim/vimrc: ./config-files/vim/vimrc
+    ~/.vim/colors/PaperColor.vim: ./config-files/vim/colors/PaperColor.vim
+    ~/.local/bin/xdg-open: ./config-files/local/bin/xdg-open
+    ~/.config/delta: ./config-files/config/delta
+    ~/.config/bat/config: ./config-files/config/bat/config
+    ~/.config/mise: ./config-files/config/mise
+    ~/.config/eza: ./config-files/config/eza
+    ~/.config/tmux: ./config-files/config/tmux/
+    ~/.config/ruff: ./config-files/config/ruff/
+    ~/.config/litecli/config: ./config-files/config/litecli/config
+    ~/.config/sqlfluff/setup.cfg: ./config-files/config/sqlfluff/setup.cfg
+    ~/.config/.prettierrc.json: ./config-files/config/prettierrc.json
+    ~/.my: ./config-files/my
+    ~/data:
+      path: /mnt/wsl/data
+      ignore-missing: true
+    ~/.config/home-manager/flake.nix:
+      type: hardlink
+      path: ./config-files/config/home-manager/flake.nix
+    ~/.config/home-manager/home.nix:
+      type: hardlink
+      path: ./config-files/config/home-manager/home.nix
+
+- defaults:
+    git:
+      depth: 1
+      create_parents: true
+
+- git:
+    ~/.zsh/zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
+    ~/.zsh/zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    ~/.zsh/zsh-vi-mode: https://github.com/jeffreytse/zsh-vi-mode.git
+    ~/.config/nvim:
+      repository: https://github.com/wcs7777/neovimrc.git
+      depth:
+      branch: work
+
+- defaults:
+    dnf:
+      reinstall: false
+      batch_mode: true
+
+- dnf:
+  - bat
+  - cargo
+  - curl
+  - dnf-plugins-core
+  - eza
+  - fd-find
+  - file
+  - fzf
+  - git
+  - git-delta
+  - jq
+  - litecli
+  - man-db
+  - nix
+  - odbcinst
+  - ripgrep
+  - ruby
+  - ssh
+  - tealdeer
+  - tmux
+  - trash-cli
+  - tree
+  - unzip
+  - vim-gtk3
+  - wget
+  - zip
+  - zsh
+
+- shell:
+  - [echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf, Configuring nix flakes]
+  - [source ./install-scripts/mise.sh, Installing mise]
+  - [source ./install-scripts/docker.sh, Installing docker]
+  - [source ./install-scripts/nvim.sh, Installing nvim]
+  - [~/.local/bin/nvim --headless "+Lazy! install" +qa, Installing Lazy plugins]

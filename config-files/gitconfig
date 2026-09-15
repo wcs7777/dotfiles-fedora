@@ -1,0 +1,23 @@
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+	useHttpPath = true
+[core]
+	repositoryFormatVersion = 0
+	symlinks = false
+	editor = nvim
+[alias]
+	lg = log --all --graph --decorate --oneline --abbrev-commit
+	last = log -1 HEAD --stat
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+	se = !git rev-list --all | xargs git grep -F
+	done = !git push origin HEAD
+	upstream = !git push -u origin HEAD
+	down=!git pull --rebase --prune $@ && git submodule update --init --recursive
+	downm=!git pull --rebase --prune origin main && git submodule update --init
+	rlc = reset HEAD^
+	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+	ign = ls-files --others --ignored --exclude-standard --directory
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+[init]
+	defaultBranch = main

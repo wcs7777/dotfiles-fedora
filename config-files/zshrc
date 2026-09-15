@@ -1,0 +1,52 @@
+HISTFILE=~/.zsh_history
+HISTSIZE=120000
+SAVEHIST=100000
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt SHARE_HISTORY             # Share history between all sessions.
+
+. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+function zvm_config() {
+	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+	ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
+	ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+	ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
+}
+
+function zvm_after_init() {
+	. ~/.my/aliases.sh
+	. ~/.my/zsh/bindkeys.zsh
+	if [ -f ~/.my-private/harpoon_paths.zsh ]; then
+		. ~/.my-private/harpoon_paths.zsh
+	else
+		. ~/.my/zsh/plugins/harpoon_paths.zsh
+	fi
+	. ~/.my/zsh/plugins/harpoon_zsh.zsh
+}
+
+. ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+additional_sources=(
+	~/foobar/barfoo.sh
+)
+for s in "${additional_sources[@]}"
+do
+	if [ -f "$s" ] ; then
+		. "$s"
+	fi
+done
+unset additional_sources
+
+if [ -f ~/.local/bin/mise ]; then
+	eval "$(~/.local/bin/mise activate zsh)"
+fi
+
+export LS_COLORS="$(vivid generate tokyonight-day)"
+
+. ~/.my/zsh/prompt.zsh
