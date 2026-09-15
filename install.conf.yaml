@@ -110,7 +110,4 @@
       quiet: false
 
 - shell:
-  - [source ./install-scripts/nix-home-manager.sh, Installing home-manager]
-  - [zsh -c "home-manager switch", Installing home-manager packages]
   - [zsh -c "mise install", Installing mise packages]
-  - [chsh -s /bin/zsh, Setting zsh as the default shell]
