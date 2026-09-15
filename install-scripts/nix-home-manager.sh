@@ -12,7 +12,9 @@ cd ~/.config/home-manager
 sudo systemctl start nix-daemon
 sudo systemctl enable nix-daemon
 
+sudo systemctl reset-failed
 nix build .#homeConfigurations."wcs".activationPackage
+sudo systemctl reset-failed
 ./result/activate
 
 cd "$current_dir"
