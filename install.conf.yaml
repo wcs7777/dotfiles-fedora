@@ -90,7 +90,6 @@
   - zip
   - zsh
 
-
 - shell:
   - [source ./install-scripts/mise.sh, Installing mise]
   - [source ./install-scripts/docker.sh, Installing docker]
