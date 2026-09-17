@@ -6,9 +6,6 @@
   - [sudo systemctl start dbus, Starting dbus service]
   - [sudo systemctl reset-failed, Resetting failed services]
   - [git submodule update --init --recursive, Installing submodules]
-  - [sudo chown root:root "$(pwd)"/config-files/etc/wsl.conf, Making root owner of wsl.conf]
-  - [sudo ln -f "$(pwd)"/config-files/etc/wsl.conf /etc/wsl.conf, Linking wsl.conf]
-  - [ln -fs /mnt/c/Users/$(/mnt/c/Program\ Files/PowerShell/7/pwsh.exe -NoProfile -Command 'Write-Host $env:USERNAME -NoNewline') ~/win, Creating windows symbolic link]
 
 - defaults:
     link:
@@ -32,9 +29,6 @@
     ~/.config/sqlfluff/setup.cfg: ./config-files/config/sqlfluff/setup.cfg
     ~/.config/.prettierrc.json: ./config-files/config/prettierrc.json
     ~/.my: ./config-files/my
-    ~/data:
-      path: /mnt/wsl/data
-      ignore-missing: true
     ~/.config/home-manager/flake.nix:
       type: hardlink
       path: ./config-files/config/home-manager/flake.nix

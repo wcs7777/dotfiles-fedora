@@ -8,6 +8,7 @@ alias hs='history 1 | rg'
 alias hsi='history 1 | rg -i'
 alias permissions="stat -c '%a %U:%G %n'"
 alias rnvim="nvim -R"
+alias vim="vimx"
 
 clipcopy () {
 	cat "${1:-/dev/stdin}" | clip.exe
