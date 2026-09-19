@@ -18,7 +18,6 @@
     ~/.zshenv: ./config-files/zshenv
     ~/.vim/vimrc: ./config-files/vim/vimrc
     ~/.vim/colors/PaperColor.vim: ./config-files/vim/colors/PaperColor.vim
-    ~/.local/bin/xdg-open: ./config-files/local/bin/xdg-open
     ~/.config/delta: ./config-files/config/delta
     ~/.config/bat/config: ./config-files/config/bat/config
     ~/.config/mise: ./config-files/config/mise
@@ -61,6 +60,7 @@
       batch_mode: true
 
 - dnf:
+  - alacritty
   - bat
   - cargo
   - curl
@@ -95,6 +95,8 @@
   - [source ./install-scripts/docker.sh, Installing docker]
   - [source ./setup-scripts/config-locales.sh, Configuring locales]
   - [source ./install-scripts/nvim.sh, Installing nvim]
+  - [source ./install-scripts/ddcutil.sh, Installing ddcutil]
+  - [source ./install-scripts/xremap.sh, Installing xremap]
   - [~/.local/bin/nvim --headless "+Lazy! install" +qa, Installing Lazy plugins]
 
 - defaults:

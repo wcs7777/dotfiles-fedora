@@ -4,6 +4,7 @@ if command -v nvim &> /dev/null; then
 	echo "nvim is already installed"
 	return 0
 fi
+
 curl -SL \
 	--output ~/.local/bin/nvim \
 	https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.appimage \
